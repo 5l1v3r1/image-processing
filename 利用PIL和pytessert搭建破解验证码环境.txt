@@ -1,0 +1,13 @@
+PIL下载地址:www.pythonware.com/products/pil/
+pytessert下载:
+
+注意PIL貌似已经过时了用pillow，而且pytessert识别带英文字母的验证码效果不好,识别数字的可以，没有tesseract强大
+
+
+【安装】工具已放置这个目录
+python2.5.2+PIL*+exe
+pytessert解压把文件夹pytesser_v0.0.1复制到C:\Python27\Lib\site-packages里，新建pytesser_v0.0.1.pth写入 pytesser_v0.0.1 内容
+
+【使用方法】这里只给出一个识别代码V.py和一道ctf用的脚本
+
+

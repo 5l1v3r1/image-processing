@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Python图像处理库：Pillow 初级教程 - CalvinChu - 博客园</title>
+<link type="text/css" rel="stylesheet" href="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-Custom.css">
+<link type="text/css" rel="stylesheet" href="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/26336.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/apexchu/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/apexchu/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/apexchu/wlwmanifest.xml">
+<script src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/hm.txt"></script><script src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'apexchu', cb_enable_mathjax=false;</script>
+<script src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/apexchu/"><img id="blogLogo" src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/apexchu/">无为</a></h1>
+<h2>时间总会解决一切,只是有时这个过程是痛苦的...</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/apexchu/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/CalvinChu">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/apexchu/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/apexchu/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 108&nbsp; </span>
+<span id="stats_article_count">文章 - 2&nbsp; </span>
+<span id="stats-comment_count">评论 - 26</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/apexchu/p/4231041.html">Python图像处理库：Pillow 初级教程</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>2014-09-14 翻译&nbsp;<a title="翻译" href="http://pillow.readthedocs.org/en/latest/handbook/tutorial.html" target="_blank">http://pillow.readthedocs.org/en/latest/handbook/tutorial.html</a></p>
+<p>Pillow由PIL而来，所以该导入该库使用import PIL</p>
+<p>本文相关的代码：<a href="https://github.com/445141126/pillow_example" target="_blank">https://github.com/445141126/pillow_example</a></p>
+<h2>Image类</h2>
+<p>Pillow中最重要的类就是Image，该类存在于同名的模块中。可以通过以下几种方式实例化：从文件中读取图片，处理其他图片得到，或者直接创建一个图片。</p>
+<p>使用Image模块中的open函数打开一张图片：</p>
+<pre><code>&gt;&gt;&gt; from PIL import Image
+&gt;&gt;&gt; im = Image.open("lena.ppm")
+</code></pre>
+<p>如果打开成功，返回一个Image对象，可以通过对象属性检查文件内容</p>
+<pre><code>&gt;&gt;&gt; from __future__ import print_function
+&gt;&gt;&gt; print(im.format, im.size, im.mode)
+PPM (512, 512) RGB
+</code></pre>
+<p>format属性定义了图像的格式，如果图像不是从文件打开的，那么该属性值为None；size属性是一个tuple，表示图像的宽和高（单位为像素）；mode属性为表示图像的模式，常用的模式为：L为灰度图，RGB为真彩色，CMYK为pre-press图像。</p>
+<p>如果文件不能打开，则抛出IOError异常。</p>
+<p>当有一个Image对象时，可以用Image类的各个方法进行处理和操作图像，例如显示图片：</p>
+<pre><code>&gt;&gt;&gt; im.show()
+</code></pre>
+<blockquote>
+<p>ps：标准版本的show()方法不是很有效率，因为它先将图像保存为一个临时文件，然后使用xv进行显示。如果没有安装xv，该函数甚至不能工作。但是该方法非常便于debug和test。（windows中应该调用默认图片查看器打开）</p>
+</blockquote>
+<h2>读写图片</h2>
+<p>Pillow库支持相当多的图片格式。直接使用Image模块中的open()函数读取图片，而不必先处理图片的格式，Pillow库自动根据文件决定格式。</p>
+<p>Image模块中的save()函数可以保存图片，除非你指定文件格式，那么文件名中的扩展名用来指定文件格式。</p>
+<p><strong>图片转成jpg格式</strong></p>
+<pre><code>from __future__ import print_function
+import os, sys
+from PIL import Image
+
+for infile in sys.argv[1:]:
+    f, e = os.path.splitext(infile)
+    outfile = f + ".jpg"
+    if infile != outfile:
+        try:
+            Image.open(infile).save(outfile)
+        except IOError:
+            print("cannot convert", infile)
+</code></pre>
+<p>save函数的第二个参数可以用来指定图片格式，如果文件名中没有给出一个标准的图像格式，那么第二个参数是必须的。</p>
+<p><strong>创建缩略图</strong></p>
+<pre><code>from __future__ import print_function
+import os, sys
+from PIL import Image
+
+size = (128, 128)
+
+for infile in sys.argv[1:]:
+    outfile = os.path.splitext(infile)[0] + ".thumbnail"
+    if infile != outfile:
+        try:
+            im = Image.open(infile)
+            im.thumbnail(size)
+            im.save(outfile, "JPEG")
+        except IOError:
+            print("cannot create thumbnail for", infile)
+</code></pre>
+<p>必须指出的是除非必须，Pillow不会解码或raster数据。当你打开一个文件，Pillow通过文件头确定文件格式，大小，mode等数据，余下数据直到需要时才处理。</p>
+<p>这意味着打开文件非常快，与文件大小和压缩格式无关。下面的程序用来快速确定图片属性：</p>
+<p><strong>确定图片属性</strong></p>
+<pre><code>from __future__ import print_function
+import sys
+from PIL import Image
+
+for infile in sys.argv[1:]:
+    try:
+        with Image.open(infile) as im:
+            print(infile, im.format, "%dx%d" % im.size, im.mode)
+    except IOError:
+        pass
+</code></pre>
+<h2>裁剪、粘贴、与合并图片</h2>
+<p>Image类包含还多操作图片区域的方法。如crop()方法可以从图片中提取一个子矩形</p>
+<p><strong>从图片中复制子图像</strong></p>
+<pre><code>box = im.copy() #直接复制图像
+box = (100, 100, 400, 400)
+region = im.crop(box)
+</code></pre>
+<p>区域由4-tuple决定，该tuple中信息为(left, upper, right, lower)。 Pillow左边系统的原点（0，0）为图片的左上角。坐标中的数字单位为像素点，所以上例中截取的图片大小为300*300像素^2。</p>
+<p><strong>处理子图，粘贴回原图</strong></p>
+<pre><code>region = region.transpose(Image.ROTATE_180)
+im.paste(region, box)
+</code></pre>
+<p>将子图paste回原图时，子图的region必须和给定box的region吻合。该region不能超过原图。而原图和region的mode不需要匹配，Pillow会自动处理。</p>
+<p>另一个例子</p>
+<p><strong>Rolling an image</strong></p>
+<pre><code>def roll(image, delta):
+    "Roll an image sideways"
+
+    image = image.copy() #复制图像
+    xsize, ysize = image.size
+
+    delta = delta % xsize
+    if delta == 0: return image
+
+    part1 = image.crop((0, 0, delta, ysize))
+    part2 = image.crop((delta, 0, xsize, ysize))
+    image.paste(part2, (0, 0, xsize-delta, ysize))
+    image.paste(part1, (xsize-delta, 0, xsize, ysize))
+
+    return image
+</code></pre>
+<p><strong>分离和合并通道</strong></p>
+<pre><code>r, g, b = im.split()
+im = Image.merge("RGB", (b, g, r))
+</code></pre>
+<p>对于单通道图片，split()返回图像本身。为了处理单通道图片，必须先将图片转成RGB。</p>
+<h2>几何变换</h2>
+<p>Image类有resize()、rotate()和transpose()、transform()方法进行几何变换。</p>
+<p><strong>简单几何变换</strong></p>
+<pre><code>out = im.resize((128, 128))
+out = im.rotate(45) # 顺时针角度表示
+</code></pre>
+<p><strong>置换图像</strong></p>
+<pre><code>out = im.transpose(Image.FLIP_LEFT_RIGHT)
+out = im.transpose(Image.FLIP_TOP_BOTTOM)
+out = im.transpose(Image.ROTATE_90)
+out = im.transpose(Image.ROTATE_180)
+out = im.transpose(Image.ROTATE_270)
+</code></pre>
+<p>transpose()和象的rotate()没有性能差别。</p>
+<p>更通用的图像变换方法可以使用<a href="http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.transform" target="_blank">transform()</a></p>
+<h2>模式转换</h2>
+<p><a href="http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.convert" target="_blank">convert()</a>方法</p>
+<p><strong>模式转换</strong></p>
+<pre><code>im = Image.open('lena.ppm').convert('L')
+</code></pre>
+<h2>图像增强</h2>
+<h3>Filter</h3>
+<p><a href="http://pillow.readthedocs.org/en/latest/reference/ImageFilter.html#module-PIL.ImageFilter" target="_blank">ImageFilter</a>模块包含很多预定义的增强filters，通过<a href="http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.filter" target="_blank">filter()</a>方法使用</p>
+<p><strong>应用filters</strong></p>
+<pre><code>from PIL import ImageFilter
+out = im.filter(ImageFilter.DETAIL) 
+</code></pre>
+<h2>像素点处理</h2>
+<p><a href="http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.point" target="_blank">point()</a>方法通过一个函数或者查询表对图像中的像素点进行处理（例如对比度操作）。</p>
+<p><strong>像素点变换</strong></p>
+<pre><code># multiply each pixel by 1.2
+out = im.point(lambda i: i * 1.2)
+</code></pre>
+<p>上述方法可以利用简单的表达式进行图像处理，通过组合point()和paste()还能选择性地处理图片的某一区域。</p>
+<p><strong>处理单独通道</strong></p>
+<pre><code># split the image into individual bands
+source = im.split()
+
+R, G, B = 0, 1, 2
+
+# select regions where red is less than 100
+mask = source[R].point(lambda i: i &lt; 100 and 255)
+
+# process the green band
+out = source[G].point(lambda i: i * 0.7)
+
+# paste the processed band back, but only where red was &lt; 100
+source[G].paste(out, None, mask)
+
+# build a new multiband image
+im = Image.merge(im.mode, source)
+</code></pre>
+<p>注意到创建mask的语句：</p>
+<pre><code>mask = source[R].point(lambda i: i &lt; 100 and 255)
+</code></pre>
+<p>该句可以用下句表示</p>
+<pre><code>imout = im.point(lambda i: expression and 255)
+</code></pre>
+<p>如果expression为假则返回expression的值为0（因为and语句已经可以得出结果了），否则返回255。（<a href="http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.point" target="_blank">mask</a>参数用法：当为0时，保留当前值，255为使用paste进来的值，中间则用于transparency效果）</p>
+<h2>高级图片增强</h2>
+<p>对其他高级图片增强，应该使用<a href="http://pillow.readthedocs.org/en/latest/reference/ImageEnhance.html#module-PIL.ImageEnhance" target="_blank">ImageEnhance</a>模块 。一旦有一个Image对象，应用ImageEnhance对象就能快速地进行设置。 可以使用以下方法调整对比度、亮度、色平衡和锐利度。</p>
+<p><strong>图像增强</strong></p>
+<pre><code>from PIL import ImageEnhance
+
+enh = ImageEnhance.Contrast(im)
+enh.enhance(1.3).show("30% more contrast")
+</code></pre>
+<p><strong>动态图</strong></p>
+<p>Pillow支持一些动态图片的格式如FLI/FLC，GIF和其他一些处于实验阶段的格式。TIFF文件同样可以包含数帧图像。</p>
+<p>当读取动态图时，PIL自动读取动态图的第一帧，可以使用seek和tell方法读取不同帧。</p>
+<pre><code>from PIL import Image
+
+im = Image.open("animation.gif")
+im.seek(1) # skip to the second frame
+
+try:
+    while 1:
+        im.seek(im.tell()+1)
+        # do something to im
+except EOFError:
+    pass # end of sequence
+</code></pre>
+<p>当读取到最后一帧时，Pillow抛出EOFError异常。</p>
+<p>当前版本只允许seek到下一帧。为了倒回之前，必须重新打开文件。</p>
+<p>或者可以使用下述迭代器类</p>
+<p><strong>动态图迭代器类</strong></p>
+<pre><code>class ImageSequence:
+    def __init__(self, im):
+        self.im = im
+    def __getitem__(self, ix):
+        try:
+            if ix:
+                self.im.seek(ix)
+            return self.im
+        except EOFError:
+            raise IndexError # end of sequence
+
+for frame in ImageSequence(im):
+    # ...do something to frame...
+</code></pre>
+<h2>Postscript Printing</h2>
+<p>Pillow允许通过Postscript Printer在图片上添加images、text、graphics。</p>
+<p><strong>Drawing Postscript</strong></p>
+<pre><code>from PIL import Image
+from PIL import PSDraw
+
+im = Image.open("lena.ppm")
+title = "lena"
+box = (1*72, 2*72, 7*72, 10*72) # in points
+
+ps = PSDraw.PSDraw() # default is sys.stdout
+ps.begin_document(title)
+
+# draw the image (75 dpi)
+ps.image(box, im, 75)
+ps.rectangle(box)
+
+# draw centered title
+ps.setfont("HelveticaNarrow-Bold", 36)
+w, h, b = ps.textsize(title)
+ps.text((4*72-w/2, 1*72-h), title)
+
+ps.end_document()
+</code></pre>
+<blockquote>
+<p>ps：textsize不能用，有谁知道吗</p>
+</blockquote>
+<h2>更多读取图片方法</h2>
+<p>之前说到Image模块的open()函数已经足够日常使用。该函数的参数也可以是一个文件对象。</p>
+<p><strong>从string中读取</strong></p>
+<pre><code>import StringIO
+
+im = Image.open(StringIO.StringIO(buffer))
+</code></pre>
+<p><strong>从tar文件中读取</strong></p>
+<pre><code>from PIL import TarIO
+
+fp = TarIO.TarIO("Imaging.tar", "Imaging/test/lena.ppm")
+im = Image.open(fp)
+</code></pre>
+<h2>草稿模式</h2>
+<p>draft()方法允许在不读取文件内容的情况下尽可能（可能不会完全等于给定的参数）地将图片转成给定模式和大小，这在生成缩略图的时候非常有效（速度要求比质量高的场合）。</p>
+<p><strong>draft模式</strong></p>
+<pre><code>from __future__ import print_function
+im = Image.open(file)
+print("original =", im.mode, im.size)
+
+im.draft("L", (100, 100))
+print("draft =", im.mode, im.size)</code></pre></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/apexchu/category/647025.html">Python</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4231041,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/CalvinChu" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/apexchu/" target="_blank"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/sample_face.gif" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/apexchu/">CalvinChu</a><br>
+<a href="http://home.cnblogs.com/u/apexchu/followees">关注 - 1</a><br>
+<a href="http://home.cnblogs.com/u/apexchu/followers">粉丝 - 9</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4231041,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+	<div class="buryit" onclick="votePost(4231041,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/apexchu/p/4231032.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/apexchu/p/4231032.html" title="发布于2015-01-17 20:52">Python练习册--PIL处理图片之加水印</a><br><a href="http://www.cnblogs.com/apexchu/p/4231044.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/apexchu/p/4231044.html" title="发布于2015-01-17 21:04">Python图片处理PIL/pillow/生成验证码/出现KeyError: 和The _imagingft C module is not installed</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-01-17 21:00</span> <a href="http://www.cnblogs.com/apexchu/">CalvinChu</a> 阅读(<span id="post_view_count">14434</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4231041" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4231041);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=26336,cb_entryId=4231041,cb_blogApp=currentBlogApp,cb_blogUserGuid='01733d0b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2015/1/17 21:00:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/componentone.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=C1&amp;utm_campaign=community" target="_blank"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160630110653437-3203292.jpg" alt="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/549079/" target="_blank">iPhone 7或要配广色域屏幕 这是苹果的大招？</a><br> ·  <a href="http://news.cnblogs.com/n/549078/" target="_blank">亚马逊平台中国山寨品泛滥 存在诸多可怕漏洞</a><br> ·  <a href="http://news.cnblogs.com/n/549077/" target="_blank">为什么你应该学习编程</a><br> ·  <a href="http://news.cnblogs.com/n/549076/" target="_blank">谷歌自动驾驶项目独立？大量招聘人才</a><br> ·  <a href="http://news.cnblogs.com/n/549075/" target="_blank">达拉斯袭警事件：美国警方首次用机器人击毙嫌犯</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20160613130538213-1713265809.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br> ·  <a href="http://kb.cnblogs.com/page/544641/" target="_blank">抽象：程序员必备的能力</a><br> ·  <a href="http://kb.cnblogs.com/page/213197/" target="_blank">编程同写作，写代码只是在码字</a><br> ·  <a href="http://kb.cnblogs.com/page/207265/" target="_blank">遇见程序员男友</a><br> ·  <a href="http://kb.cnblogs.com/page/511529/" target="_blank">设计师的视觉设计五项修炼</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td style="padding-bottom:5px" align="center"><div class="img_me"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/o_me.jpg" border="0"></div></td>
+</tr><tr><td style="padding-top:10px;vertical-align: middle;"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/r_mailaddress.JPG" border="0" height="25" width="170"></td></tr>
+</tbody></table>
+<div>
+<dl>
+<li><a href="http://labs.aoao.org.cn/akira/index.html#download" target="_blank"><img src="Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%BA%93%EF%BC%9APillow%20%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%20-%20CalvinChu%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/zcover.jpg" title="这是本不错的JavaScript书藉,推荐"></a></li>
+<li>在看书:JavaScript 王者归来</li>
+</dl>
+</div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/apexchu/">CalvinChu</a><br>园龄：<a href="http://home.cnblogs.com/u/apexchu/" title="入园时间：2007-05-08">9年2个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/apexchu/followers/">9</a><br>关注：<a href="http://home.cnblogs.com/u/apexchu/followees/">1</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('01733d0b-63cf-dd11-9e4d-001cf0cd104b')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2016/06/01');return false;">&lt;</a></td><td align="center">2016年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2016/08/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td class="CalTodayDay" align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/apexchu/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/apexchu/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/apexchu/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/apexchu/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/apexchu/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/apexchu/tag/centos/">centos</a>(2)</li><li><a href="http://www.cnblogs.com/apexchu/tag/LINQ/">LINQ</a>(2)</li><li><a href="http://www.cnblogs.com/apexchu/tag/linux/">linux</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/List/">List</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/nat/">nat</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/postfix/">postfix</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/WebService/">WebService</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/%E5%AE%89%E8%A3%85/">安装</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/%E9%98%B2%E7%81%AB%E5%A2%99/">防火墙</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/%E9%85%8D%E7%BD%AE/">配置</a>(1)</li><li><a href="http://www.cnblogs.com/apexchu/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/apexchu/category/93093.html">.Net Framework(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/apexchu/category/655120.html">CentOS(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/apexchu/category/126777.html">Freebsd(34)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/apexchu/category/144853.html">JavaScript(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/apexchu/category/114667.html">MS SQL(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/apexchu/category/273955.html">MVC(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/apexchu/category/93096.html">Other(18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/apexchu/category/647025.html">Python(25)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/apexchu/category/93099.html">Reproduce</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/apexchu/category/93094.html">Symbian</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/apexchu/category/93095.html">VC(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/apexchu/category/766420.html">生活杂记(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/apexchu/archive/2015/12.html">2015年12月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/apexchu/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/apexchu/archive/2015/03.html">2015年3月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/apexchu/archive/2015/02.html">2015年2月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/apexchu/archive/2015/01.html">2015年1月 (34)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/apexchu/archive/2014/12.html">2014年12月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/apexchu/archive/2014/11.html">2014年11月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/apexchu/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/apexchu/archive/2012/01.html">2012年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/apexchu/archive/2011/12.html">2011年12月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/apexchu/archive/2010/12.html">2010年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/apexchu/archive/2010/11.html">2010年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/apexchu/archive/2010/10.html">2010年10月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/apexchu/archive/2010/09.html">2010年9月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/apexchu/archive/2010/03.html">2010年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/apexchu/archive/2009/03.html">2009年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/apexchu/archive/2008/07.html">2008年7月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/apexchu/archive/2008/06.html">2008年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/apexchu/archive/2008/04.html">2008年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/apexchu/archive/2008/03.html">2008年3月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/apexchu/archive/2008/02.html">2008年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/apexchu/archive/2007/12.html">2007年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/apexchu/archive/2007/05.html">2007年5月 (7)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_imagecategory" class="catListImageCategory sidebar-block">
+<h3 class="catListTitle">相册</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/apexchu/gallery/93100.html" rel="nofollow">Doc Images(17)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/apexchu/gallery/95488.html" rel="nofollow">My Life(1)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_links93102" class="catList sidebar-block">
+<h3 class="catListTitle">Forums</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_3_Link_0" href="http://www.codeguru.com/cpp/" rel="nofollow" target="_blank">Codeguru </a> </li>
+
+<li><a id="CatList_LinkList_3_Link_1" href="http://www.codeproject.com/" rel="nofollow" target="_blank">CodeProject</a> </li>
+
+<li><a id="CatList_LinkList_3_Link_2" href="http://www.forum.nokia.com/" rel="nofollow" target="_blank">NOKIA FORUMS </a> </li>
+
+<li><a id="CatList_LinkList_3_Link_3" href="http://www.vckbase.com/" rel="nofollow" target="_blank">VCKBASE</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_links95491" class="catList sidebar-block">
+<h3 class="catListTitle">Friend's Links</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_4_Link_0" href="http://www.cnblogs.com/rchen" rel="nofollow" target="_blank">NEIL</a> </li>
+
+<li><a id="CatList_LinkList_4_Link_1" href="http://www.cnblogs.com/snapping" rel="nofollow" target="_blank">SNAPPING</a> </li>
+
+<li><a id="CatList_LinkList_4_Link_2" href="http://blog.dreambrook.com/jzli/" rel="nofollow">李建忠</a> </li>
+
+<li><a id="CatList_LinkList_4_Link_3" href="http://blog.joycode.com/sunmast/" rel="nofollow" target="_blank">夏桅</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_links93101" class="catList sidebar-block">
+<h3 class="catListTitle">Resource</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_5_Link_0" href="http://developer.symbian.com/main/tools/opensrc/index.jsp" rel="nofollow" target="_blank">Symbian Code Examples </a> </li>
+
+<li><a id="CatList_LinkList_5_Link_1" href="http://www.symbian.com/" rel="nofollow" target="_blank">Symbian OS</a> </li>
+
+<li><a id="CatList_LinkList_5_Link_2" href="http://developer.symbian.com/main/tools/index.jsp" rel="nofollow" target="_blank">Symbian Tool Resources </a> </li>
+
+<li><a id="CatList_LinkList_5_Link_3" href="http://www.uiq.com/developer.html" rel="nofollow" target="_blank">UIQ Developer Resources </a> </li>
+
+<li><a id="CatList_LinkList_5_Link_4" href="http://www.3gaid.com/" rel="nofollow" target="_blank">手机应用集成动力 </a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/apexchu/p/5015961.html#3420651">1. Re:Python实例浅谈之三Python与C/C++相互调用</a></li>
+        <li class="recent_comment_body">c++调用python时，如果python中使用了import导入了其他模块，为什么会报错[ERROR] Python get module failed。例如：import stringprint ......</li>
+        <li class="recent_comment_author">--li_r</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/apexchu/p/4271264.html#3235191">2. Re:postfix 安装配置详解</a></li>
+        <li class="recent_comment_body">你好，很高兴看到你这篇文章。<br>目前我在配置邮件服务器，遇到了一些问题，问题已经发到你的邮箱 apexchu@gmail.com<br>，希望能得到你的帮助。谢谢</li>
+        <li class="recent_comment_author">--yuan_hang</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/apexchu/p/4246927.html#3218630">3. Re:CentOS里下载百度网盘 / 360 网盘资源的方法</a></li>
+        <li class="recent_comment_body">百度云测试成功，谢谢楼主</li>
+        <li class="recent_comment_author">--江中炼</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/apexchu/p/4246927.html#3115495">4. Re:CentOS里下载百度网盘 / 360 网盘资源的方法</a></li>
+        <li class="recent_comment_body">wget -S -c -O pi-7001-9000.tar.gz --header "Cookie:__guid=10672870.2458283532834101000.1422165765547......</li>
+        <li class="recent_comment_author">--Boon</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/apexchu/archive/2007/05/31/765937.html#1583445">5. Re:关于SqlHelper中报"Parameter count does not match Parameter Value count."错误的解决方法</a></li>
+        <li class="recent_comment_body">谢谢啊 :)</li>
+        <li class="recent_comment_author">--Kevin  Li</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/apexchu/p/4119252.html">1. nginx 服务器重启命令，关闭(22130)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4231041.html">2. Python图像处理库：Pillow 初级教程(14434)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4271264.html">3. postfix 安装配置详解(13613)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4193117.html">4. 查看centos中的用户和用户组(9328)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4245278.html">5. Linux CentOS6.5下编译安装MySQL 5.6.16【给力详细教程】(4572)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/apexchu/archive/2008/06/15/1222628.html">1. 抛砖引玉(11)</a></li><li><a href="http://www.cnblogs.com/apexchu/archive/2008/06/29/1231959.html">2. 接"抛砖引玉"(7)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4246927.html">3. CentOS里下载百度网盘 / 360 网盘资源的方法(2)</a></li><li><a href="http://www.cnblogs.com/apexchu/archive/2007/12/10/988850.html">4. 在ASP.NET 中备份和恢复SQLServer 2005.(2)</a></li><li><a href="http://www.cnblogs.com/apexchu/archive/2007/05/31/765937.html">5. 关于SqlHelper中报"Parameter count does not match Parameter Value count."错误的解决方法(1)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/apexchu/archive/2007/05/31/765937.html">1. 关于SqlHelper中报"Parameter count does not match Parameter Value count."错误的解决方法(1)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4246927.html">2. CentOS里下载百度网盘 / 360 网盘资源的方法(1)</a></li><li><a href="http://www.cnblogs.com/apexchu/p/4209742.html">3. Python_使用smtplib和email模块发送邮件(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 CalvinChu
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9fd429e45759ebe9b3bf7e018cbeffb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+
+
+</body></html>

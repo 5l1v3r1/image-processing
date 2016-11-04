@@ -1,0 +1,20 @@
+lambda只是一个表达式，函数体比def简单很多。
+
+lambda的主体是一个表达式，而不是一个代码块。仅仅能在lambda表达式中封装有限的逻辑进去。
+
+lambda表达式是起到一个函数速写的作用。允许在代码内嵌入一个函数的定义。
+
+f=lambda x,y,x:x+y+z  定义了一个lambda表达式，求三个数的和。
+f(1,2,3)
+
+
+再看一个例子：
+用lambda表达式求n的阶乘。
+n=5
+reduce(lambda x,y:x*y,range(1,n+1))
+
+
+def action(x):
+    return lambda y:y+x
+a=action(2)
+a(22)
